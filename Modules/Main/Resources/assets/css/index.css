@@ -1,0 +1,400 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/*
+    Created on : Nov 24, 2022, 10:30:13 PM
+    Author     : g905
+*/
+
+
+html, body {
+    overflow-x: hidden;
+}
+
+header {
+    background-image: url('../img/header_bg_2.jpg');
+    background-size: cover;
+    background-position-y: 28%;
+}
+
+.header-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0), rgba(255,255,255,1));
+}
+
+footer {
+    background-image: url('../img/footer_bg.png');
+    background-size: cover;
+    color: #fff;
+}
+
+.footer-wrap {
+}
+
+.footer-left, .footer-right {
+}
+
+.logo img {
+    max-width: 150px;
+}
+
+.search-form .form-control {
+    border: 0;
+}
+
+.input-group-text, .input-group-text i {
+    background-color: #4F9518;
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+}
+
+.search-submit:hover {
+    opacity: .8;
+}
+
+.btn-neon-pink {
+    background-color: #FF2164;
+    border-radius: 0;
+    color: #fff;
+}
+
+.btn.btn-neon-pink:hover {
+    opacity: .8;
+    background-color: #FF2164;
+    color: #fff;
+}
+
+.msg {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.msg:hover {
+    opacity: .8;
+}
+
+.msg i {
+    font-size: 30px;
+}
+
+.viber {
+    background: #7B519D;
+}
+
+.whatsapp {
+    background: #30BF39;
+}
+
+.telegram {
+    background: #23A7DC;
+}
+
+.contacts {
+    font-size: larger;
+}
+
+header .contacts a {
+    color: #fff;
+}
+
+.contacts-email, .contacts-phone {
+    background: rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: fit-content;
+
+}
+
+footer .contacts a {
+    color: #fff;
+}
+
+.contacts a {
+    text-decoration: none;
+}
+
+.contacts a:hover {
+    opacity: .8;
+}
+
+.slide {
+    display: flex !important;
+    justify-content: center;
+}
+
+.slide img {
+    width: 100%;
+}
+
+.slick-prev {
+    left: 20px;
+}
+
+.slick-next {
+    right: 20px;
+}
+
+.slick-prev, .slick-next {
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 60px;
+}
+
+.slick-dots {
+    bottom: 20px;
+}
+
+.slick-dots li button:before {
+    font-size: 20px;
+    line-height: 20px;
+    color: #fff;
+    opacity: .7;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #fff;
+    opacity: 1;
+}
+
+::selection {
+    color: #fff;
+    text-shadow: none;
+    background-color: #FF2164;
+}
+
+.catalog {
+    list-style-type: none;
+    font-size: 36px;
+    background: rgba(255,255,255,0.6);
+}
+
+.catalog a {
+    text-decoration: none;
+    color: #666;
+}
+
+.catalog a:hover {
+    color: #666;
+}
+
+.nav-pills .nav-link {
+    border: 2px solid rgba(255,255,255,0);
+    color: #666;
+    border-radius: 0;
+}
+
+.nav-pills .nav-link.active {
+    border: 2px solid #4F9518;
+}
+
+.nav-link:not(.active):hover {
+    border: 2px solid #4F9518;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background: #4F9518;
+    border-radius: 0;
+}
+
+main {
+    position: relative;
+    min-height: 50vh;
+    z-index: 50;
+}
+
+main:not(section) {
+    background: url('../img/kletka2_15.png');
+    background-repeat: repeat;
+}
+
+.plate1 {
+    position: absolute;
+    z-index: -1;
+    top: 20vh;
+    left: -80px;
+}
+
+.plate2 {
+    position: absolute;
+    top: -180px;
+    right: -100px;
+    z-index: -1;
+}
+
+h1.display-5 {
+    color: #666;
+    font-weight: 600;
+}
+
+.index-popular {
+    background-image: url('../img/lgreen_bg_3.jpg');
+    background-size: cover;
+}
+
+.index-new {
+    background-image: url('../img/bg_tiles.png');
+    background-size: cover;
+}
+
+.card {
+    border-radius: 0;
+    /*width: 19rem;*/
+    width: 302px;
+}
+
+.card-img, .card-img-top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    height: 300px;
+    width: 300px;
+}
+
+.slick-pop .card {
+    margin: 0 15px;
+
+}
+
+/* the parent */
+.slick-pop {
+    max-width: 100%;
+}
+
+.index-text {
+    background: rgba(255,255,255,0.4);
+}
+
+.parameters i {
+    color: #666;
+}
+
+.rating i {
+    color: gold;
+}
+
+a.card-link {
+    text-decoration: none;
+    color: #666;
+}
+
+a.card-link:hover .card {
+    opacity: .8;
+}
+
+.category-title, .category-title-lg {
+    position: relative;
+    height: 150px;
+}
+
+.category-title img.cat-img-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+}
+
+.category-title-lg img.cat-img-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+}
+
+.category-title-text {
+    position: absolute;
+    width: 100%;
+    text-align: right;
+    font-weight: 600;
+    font-size: 64px;
+    color: #666;
+    line-height: 150px;
+    overflow: hidden;
+}
+
+.subcategories {
+    font-size: 24px;
+}
+
+.subcategories .nav-item {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.subcategories .nav-item a {
+    border: 2px solid #4F9518;
+}
+
+.subcategories .nav-item a:not(.active):hover {
+    opacity: .8;
+}
+
+.recipes {
+    gap: 1.6rem;
+}
+
+.recipe {
+}
+
+.card-title {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.card .recipe-description {
+    height: 90px;
+}
+
+.more-btn {
+    color: #666;
+    background: none;
+    border-radius: 0;
+    border: 2px solid #4F9518;
+    min-width: 100px;
+}
+
+.more-btn:hover {
+    color: white;
+    background: #4F9518;
+}
+
+.info-content .float-start {
+    margin: 0 1rem .5rem 0;
+}
+
+.info-content {
+    font-size: 24px;
+}
+
+.modal, .modal-open {
+    padding-right: unset!important;
+}
+
+.modal {
+    color: #666;
+}
+
+.modal-content {
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 0;
+}
