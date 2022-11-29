@@ -21,12 +21,12 @@ class Category extends Model {
 
     public function getRecipes() {
         //dd($this->products()->get('id')->toArray());
-        return Recipe::whereIn('product_id', $this->products()->get('id')->toArray())->get();
+        return Recipe::where(['active' => true])->whereIn('product_id', $this->products()->get('id')->toArray())->get();
     }
 
     public function getRecipesByProduct($product) {
         $prod_id = Product::where(['code' => $product])->get('id')->toArray();
-        return Recipe::where(['product_id' => $prod_id])->get();
+        return Recipe::where(['product_id' => $prod_id, 'active' => true])->get();
     }
 
 }

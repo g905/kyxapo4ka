@@ -249,7 +249,7 @@
     </div>
 </section>
 
-<section class="index-new py-5">
+<section class="index-new py-5 bg-white">
     <div class="container">
         <div class="row">
             <h1 class="display-5 mb-5">Новые</h1>

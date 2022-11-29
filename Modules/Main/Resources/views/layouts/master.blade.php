@@ -23,18 +23,18 @@
                         <div class="contacts d-flex flex-column justify-content-between h-100 align-items-md-end align-items-center">
                             <div class="contacts-top d-flex flex-nowrap flex-column flex-md-row align-items-md-end align-items-center">
                                 <div class="contacts-email me-0 me-md-5">
-                                    <a href="mailto:e@mail.com">
+                                    <a href="mailto:{{ setting('site.email') }}">
                                         <span>
                                             <i class="fa-regular fa-envelope me-1"></i>
-                                            breakestra@yandex.ru
+                                            {{ setting('site.email') }}
                                         </span>
                                     </a>
                                 </div>
                                 <div class="contacts-phone">
-                                    <a href="tel://+79128577186">
+                                    <a href="tel://{{ preg_replace('/\s+/', '', setting('site.phone')); }}">
                                         <span>
                                             <i class="fa-solid fa-phone me-1"></i>
-                                            +7 912 857 71 86
+                                            {{ setting('site.phone') }}
                                         </span>
                                     </a>
                                 </div>
@@ -116,18 +116,18 @@
                         <div class="contacts d-flex flex-column justify-content-between h-100 align-items-md-end align-items-center">
                             <div class="contacts-top d-flex flex-nowrap flex-column flex-md-row align-items-md-end align-items-center">
                                 <div class="contacts-email me-0 me-md-5">
-                                    <a href="mailto:e@mail.com">
+                                    <a href="mailto:{{ setting('site.email') }}">
                                         <span>
                                             <i class="fa-regular fa-envelope me-1"></i>
-                                            breakestra@yandex.ru
+                                            {{ setting('site.email') }}
                                         </span>
                                     </a>
                                 </div>
                                 <div class="contacts-phone">
-                                    <a href="tel://+79128577186">
+                                    <a href="tel://{{ preg_replace('/\s+/', '', setting('site.phone')); }}">
                                         <span>
                                             <i class="fa-solid fa-phone me-1"></i>
-                                            +7 912 857 71 86
+                                            {{ setting('site.phone') }}
                                         </span>
                                     </a>
                                 </div>

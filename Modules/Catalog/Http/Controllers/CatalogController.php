@@ -20,7 +20,7 @@ class CatalogController extends Controller {
     public function category($code, $product = null) {
         //dd($code);
         $cat = \Modules\Catalog\Entities\Category::where(['code' => $code])->first();
-        $cats = \Modules\Catalog\Entities\Category::all();
+        $cats = \Modules\Catalog\Entities\Category::where(['active' => true])->orderBy('sort')->get();
 
         $recipes = $product ? $cat->getRecipesByProduct($product) : $cat->getRecipes();
         return view('catalog::category', ['cat' => $cat, 'cats' => $cats, 'recipes' => $recipes, 'product' => $product]);
