@@ -129,6 +129,7 @@ return [
             ],
         ],
         'widgets' => [
+            'App\\Models\\Voyager\\Widgets\\RecipeDimmer'
         ],
     ],
     /*

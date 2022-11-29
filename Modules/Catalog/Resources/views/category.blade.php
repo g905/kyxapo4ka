@@ -54,13 +54,14 @@
         <div class="recipe">
             <a class="card-link" href="#">
                 <div class="card" >
-                    <img src="{{ Voyager::image($recipe->thumbnail('cropped', 'main_image')) }}" class="card-img-top" alt="{{ $recipe->code }}">
+                    <!--<img src="{{ Voyager::image($recipe->thumbnail('cropped', 'main_image')) }}" class="card-img-top" alt="{{ $recipe->code }}">-->
+                    <img src="{{ $recipe->main_image }}" class="card-img-top" alt="{{ $recipe->code }}">
 
                     <div class="card-body">
                         <h5 class="card-title text-black">
                             {{ $recipe->name }}
                         </h5>
-                        <div class="recipe-description">{{ $recipe->description }}</div>
+                        <div class="recipe-description">{{ Str::limit($recipe->description, 80) }}</div>
                         <div class="parameters text-start">
                             <div class="timer mb-3">
                                 <span class="timer-line"><i class="fa-regular fa-clock me-2"></i>3:30ч</span>
