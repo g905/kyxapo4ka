@@ -17,12 +17,23 @@ class CatalogController extends Controller {
         return view('catalog::index');
     }
 
-    public function category($code, $product = null) {
+    public function category(Request $request, $code, $recipe = null) {
+        //dd($request);
+        if ($recipe) {
+            return view('catalog::recipe', ['recipe' => \Modules\Catalog\Entities\Recipe::where(['code' => $recipe])->first()]);
+        }
         $cat = \Modules\Catalog\Entities\Category::where(['code' => $code])->first();
         $cats = \Modules\Catalog\Entities\Category::where(['active' => true])->orderBy('sort')->get();
 
-        $recipes = $cat->getRecipes($product);
-        return view('catalog::category', ['cat' => $cat, 'cats' => $cats, 'recipes' => $recipes, 'product' => $product]);
+        $recipes = $cat->getRecipes($request);
+
+        $prices = [300, 500, 800, 1000, 1500, 2000];
+        $sorts = [
+            ["code" => "popular", "text" => "Сначала популярные"],
+            ["code" => "price", "text" => "Сначала дешевые"]
+        ];
+
+        return view('catalog::category', ['cat' => $cat, 'cats' => $cats, 'recipes' => $recipes, 'types' => Type::all(), 'prices' => $prices, 'sorts' => $sorts, 'request' => $request]);
     }
 
     /**

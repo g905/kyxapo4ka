@@ -4,6 +4,7 @@ namespace Modules\Catalog\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Http\Request;
 
 class Category extends Model {
 
@@ -19,15 +20,37 @@ class Category extends Model {
         return $this->hasMany(Product::class);
     }
 
-    public function getRecipes($product = null) {
+    public function getRecipes(Request $request) {
         $q = Recipe::where(['active' => true]);
-        if ($product) {
-            $prod_id = Product::where(['code' => $product])->get('id')->toArray();
+        if ($request->filled('product')) {
+            $prod_id = Product::where(['code' => $request->product])->get('id')->toArray();
             $q->where(['product_id' => $prod_id, 'active' => true]);
         } else {
             $q->whereIn('product_id', $this->products()->get('id')->toArray());
         }
-        return $q->get();
+
+        if ($request->filled('price')) {
+            $q->where('price', '<=', $request->price);
+        }
+
+        if ($request->filled('type')) {
+            $q->where(['type_id' => $request->type]);
+        }
+
+        if ($request->filled("sort")) {
+            switch ($request->sort) {
+                case "popular":
+                    $q->orderBy("rating", "desc");
+                    break;
+                case "price":
+                    $q->orderBy("price", "asc");
+                    break;
+            }
+        } else {
+            $q->orderBy('name', 'asc');
+        }
+
+        return $q->paginate(9);
     }
 
 }
