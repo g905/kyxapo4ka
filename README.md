@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/38289458/205159550-e4978191-372b-4d12-b2b0-40912337d95b.png)
+
 ## Кухарочка
 
 Подбор рецептов по ингредиенту.
