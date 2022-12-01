@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Кухарочка</title>
+        <title>{{ setting('site.title') }}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="{{ Module::asset('main:img/favicon.ico') }}">
@@ -84,6 +84,7 @@
             </div>
             <div class="container pt-5">
                 <div class="row">
+                    @if(!Request::route('recipe'))
                     <div class="col-12 col-md-3">
 
                         @yield('categories')
@@ -94,6 +95,16 @@
                         @yield('content')
 
                     </div>
+
+                    @else
+
+                    <div class="col-12">
+
+                        @yield('content')
+
+                    </div>
+
+                    @endif
                 </div>
             </div>
 
@@ -105,7 +116,7 @@
                 <div class="footer-wrap py-5 d-flex flex-column flex-md-row align-items-center justify-content-between">
                     <div class="footer-left d-flex flex-column justify-content-between">
                         <div class="footer-logo text-center mb-4">
-                            <img class="" src="{{ Module::asset('main:img/kuh_logo_2.png') }}" alt="">
+                            <img class="" src="{{ Module::asset('main:img/kuh_logo_3.png') }}" alt="">
                         </div>
                         <div class="footer-feedback text-center mb-4">
                             <button class="btn btn-neon-pink" type="button" href="#">

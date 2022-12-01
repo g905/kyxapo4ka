@@ -47,7 +47,8 @@ class Category extends Model {
                     break;
             }
         } else {
-            $q->orderBy('name', 'asc');
+            $request->sort = "popular";
+            $q->orderBy("rating", "desc");
         }
 
         return $q->paginate(9);

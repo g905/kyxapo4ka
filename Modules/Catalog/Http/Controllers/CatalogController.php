@@ -22,6 +22,7 @@ class CatalogController extends Controller {
         if ($recipe) {
             return view('catalog::recipe', ['recipe' => \Modules\Catalog\Entities\Recipe::where(['code' => $recipe])->first()]);
         }
+
         $cat = \Modules\Catalog\Entities\Category::where(['code' => $code])->first();
         $cats = \Modules\Catalog\Entities\Category::where(['active' => true])->orderBy('sort')->get();
 

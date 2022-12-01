@@ -15,6 +15,10 @@ class Product extends Model {
         return \Modules\Catalog\Database\factories\ProductFactory::new();
     }
 
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
     public function recipes() {
         return $this->hasMany(Recipe::class);
     }

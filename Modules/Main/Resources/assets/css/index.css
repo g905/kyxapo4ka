@@ -350,6 +350,7 @@ a.card-link:hover .card {
 }
 
 .recipe {
+    font-size: 16px;
 }
 
 .card-title {
@@ -397,4 +398,33 @@ a.card-link:hover .card {
 
 .btn {
     border-radius: 0;
+}
+
+
+.btn-check:checked + .btn.prod-link {
+    border: 2px solid #4F9518;
+    background: #4F9518;
+    color: #fff;
+    cursor:unset;
+}
+
+.btn.prod-link {
+    border: 2px solid rgba(0,0,0,0);
+    color: #666;
+}
+
+.btn.prod-link:hover:not(.btn-check:checked + .btn.prod-link) {
+    border: 2px solid #4F9518;
+    color: #666;
+    opacity: .8;
+}
+
+.subcategories .btn.prod-link {
+    border: 2px solid #4F9518;
+    font-size: 24px;
+    margin: 0 1rem 1rem 0;
+}
+
+.sort-by {
+    text-align: right;
 }

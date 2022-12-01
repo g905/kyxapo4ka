@@ -13,7 +13,7 @@ class MainController extends Controller {
      * @return Renderable
      */
     public function index() {
-        $cats = \Modules\Catalog\Entities\Category::all();
+        $cats = \Modules\Catalog\Entities\Category::where(['active' => true])->orderBy('sort', 'asc')->get();
         return view('main::index', ['cats' => $cats]);
     }
 

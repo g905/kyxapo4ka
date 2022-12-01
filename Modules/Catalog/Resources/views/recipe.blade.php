@@ -2,18 +2,23 @@
 
 @section('content')
 
+<a href="{{ url()->previous() }}">back</a>
+
 <div class="main-content">
     <div class="recipe-title mb-5">
         <h1 class="display-5">{{ $recipe->name }}</h1>
     </div>
-
     <div class="recipe-pics d-flex mb-5">
+        <div class="recipe-image me-5">
+            <!--<img data-fancybox data-src="{{ Voyager::image($recipe->main_image) }}" class="" src="img/borscht_1.png">-->
+            <img data-fancybox data-src="{{ $recipe->main_image }}" class="" src="{{ $recipe->main_image }}">
+        </div>
+        @foreach(json_decode($recipe->images) as $image)
         <div class="recipe-image me-5">
             <img data-fancybox data-src="img/vinegret.png" class="" src="img/borscht_1.png">
         </div>
-        <div class="recipe-image">
-            <img data-fancybox data-src="img/vinegret.png" class="" src="img/borscht_1.png">
-        </div>
+        @endforeach
+
     </div>
 
     <div class="recipe-description mb-5">
@@ -29,35 +34,11 @@
         </div>
     </div>
 
-    <!--<div class="recipe-ingredients mb-5">
-        <h4>Ингредиенты</h4>
-        <table class="table caption-top w-50">
 
-            <tr>
-                <td>Картошка</td>
-                <td>5шт</td>
-            </tr>
-            <tr>
-                <td>Свекла</td>
-                <td>5шт</td>
-            </tr>
-            <tr>
-                <td>Селитра аммиачная</td>
-                <td>500гр</td>
-            </tr>
-            <tr>
-                <td>Ананас</td>
-                <td>5шт</td>
-            </tr>
-        </table>
-    </div>-->
 
     <div class="recipe-description mb-5">
         <h4>Рецепт</h4>
         {{ $recipe->content }}
-
-
-
 
     </div>
 
@@ -81,6 +62,7 @@
 @endsection
 
 @section('secondary')
+
 <section class="index-new py-5 position-relative bg-white">
     <div class="plate2">
         <img src="img/plate2.png">
@@ -92,130 +74,9 @@
         <div class="row">
             <div class="info-content">
                 <div class="slick-pop">
-                    <div class="slide">
-                        <a class="card-link" href="#">
-                            <div class="card" >
-                                <img src="img/steak.png" class="card-img-top" alt="...">
-
-                                <div class="card-body">
-                                    <h5 class="card-title text-black">
-                                        Стейк из говядины
-                                    </h5>
-                                    <div class="recipe-description">Брутальный кусок мяса средней прожарки.</div>
-                                    <div class="parameters text-start">
-                                        <div class="timer mb-3">
-                                            <span class="timer-line"><i class="fa-regular fa-clock me-2"></i>3:30ч</span>
-                                        </div>
-                                        <div class="cost mb-3">
-                                            <span class="cost-line"><i class="fa-solid fa-ruble-sign me-2"></i>300р</span>
-                                        </div>
-                                        <div class="rating text-end">
-                                            <span class="rating-line">
-                                                <i class="fa-solid fa-star me-1"></i>
-                                                <i class="fa-solid fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="slide">
-                        <a class="card-link" href="#">
-                            <div class="card" >
-                                <img src="img/steak.png" class="card-img-top" alt="...">
-
-                                <div class="card-body">
-                                    <h5 class="card-title text-black">
-                                        Стейк из говядины
-                                    </h5>
-                                    <div class="recipe-description">Брутальный кусок мяса средней прожарки.</div>
-                                    <div class="parameters text-start">
-                                        <div class="timer mb-3">
-                                            <span class="timer-line"><i class="fa-regular fa-clock me-2"></i>3:30ч</span>
-                                        </div>
-                                        <div class="cost mb-3">
-                                            <span class="cost-line"><i class="fa-solid fa-ruble-sign me-2"></i>300р</span>
-                                        </div>
-                                        <div class="rating text-end">
-                                            <span class="rating-line">
-                                                <i class="fa-solid fa-star me-1"></i>
-                                                <i class="fa-solid fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="slide">
-                        <a class="card-link" href="#">
-                            <div class="card" >
-                                <img src="img/steak.png" class="card-img-top" alt="...">
-
-                                <div class="card-body">
-                                    <h5 class="card-title text-black">
-                                        Стейк из говядины
-                                    </h5>
-                                    <div class="recipe-description">Брутальный кусок мяса средней прожарки.</div>
-                                    <div class="parameters text-start">
-                                        <div class="timer mb-3">
-                                            <span class="timer-line"><i class="fa-regular fa-clock me-2"></i>3:30ч</span>
-                                        </div>
-                                        <div class="cost mb-3">
-                                            <span class="cost-line"><i class="fa-solid fa-ruble-sign me-2"></i>300р</span>
-                                        </div>
-                                        <div class="rating text-end">
-                                            <span class="rating-line">
-                                                <i class="fa-solid fa-star me-1"></i>
-                                                <i class="fa-solid fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="slide">
-                        <a class="card-link" href="#">
-                            <div class="card" >
-                                <img src="img/steak.png" class="card-img-top" alt="...">
-
-                                <div class="card-body">
-                                    <h5 class="card-title text-black">
-                                        Стейк из говядины
-                                    </h5>
-                                    <div class="recipe-description">Брутальный кусок мяса средней прожарки.</div>
-                                    <div class="parameters text-start">
-                                        <div class="timer mb-3">
-                                            <span class="timer-line"><i class="fa-regular fa-clock me-2"></i>3:30ч</span>
-                                        </div>
-                                        <div class="cost mb-3">
-                                            <span class="cost-line"><i class="fa-solid fa-ruble-sign me-2"></i>300р</span>
-                                        </div>
-                                        <div class="rating text-end">
-                                            <span class="rating-line">
-                                                <i class="fa-solid fa-star me-1"></i>
-                                                <i class="fa-solid fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                                <i class="fa-regular fa-star me-1"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @foreach($recipe->getSimilar() as $recipe)
+                    @include('catalog::recipe_card', ['cat' => $recipe->category])
+                    @endforeach
 
                 </div>
             </div>

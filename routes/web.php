@@ -22,7 +22,7 @@ use Modules\Main\Http\Controllers\MainController;
  *
  */
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

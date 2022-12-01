@@ -193,56 +193,6 @@ footer .contacts a {
     color: #666;
 }
 
-.types .btn.prod-link{
-    font-size: 18px;
-    border: 2px solid rgba(0,0,0,0);
-    margin: 0 .5rem .5rem 0;
-}
-
-.prices .btn.prod-link{
-    font-size: 18px;
-    border: 2px solid rgba(0,0,0,0);
-    margin: 0 .5rem .5rem 0;
-}
-
-.sort-by {
-    text-align: right;
-}
-
-.sort-by .btn.prod-link{
-    font-size: 16px;
-    border: 2px solid rgba(0,0,0,0);
-    margin: 0 0 .5rem 0;
-}
-
-.btn.prod-link {
-    font-size: 24px;
-    color: #666;
-    margin: 0 1rem 1rem 0;
-    border: 2px solid #4F9518;
-}
-
-.btn.prod-link:hover {
-    border: 2px solid #4F9518;
-    color: #666;
-    opacity: .8;
-}
-.btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active {
-    border: 2px solid #4F9518;
-    color: #666;
-    background: #4F9518;
-    color: #fff;
-}
-
-.btn-check:checked + .btn:hover{
-    opacity: unset;
-    cursor: unset;
-}
-
-.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
-    opacity: 1;
-}
-
 .nav-pills .nav-link {
     border: 2px solid rgba(255,255,255,0);
     color: #666;
@@ -400,6 +350,7 @@ a.card-link:hover .card {
 }
 
 .recipe {
+    font-size: 16px;
 }
 
 .card-title {
@@ -447,4 +398,33 @@ a.card-link:hover .card {
 
 .btn {
     border-radius: 0;
+}
+
+
+.btn-check:checked + .btn.prod-link {
+    border: 2px solid #4F9518;
+    background: #4F9518;
+    color: #fff;
+    cursor:unset;
+}
+
+.btn.prod-link {
+    border: 2px solid rgba(0,0,0,0);
+    color: #666;
+}
+
+.btn.prod-link:hover:not(.btn-check:checked + .btn.prod-link) {
+    border: 2px solid #4F9518;
+    color: #666;
+    opacity: .8;
+}
+
+.subcategories .btn.prod-link {
+    border: 2px solid #4F9518;
+    font-size: 24px;
+    margin: 0 1rem 1rem 0;
+}
+
+.sort-by {
+    text-align: right;
 }
