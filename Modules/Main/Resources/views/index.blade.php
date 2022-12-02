@@ -54,7 +54,10 @@
 
 
 @if(Modules\Catalog\Entities\Recipe::getNew()->count())
-<section class="index-new py-5 bg-white">
+<section class="index-new py-5 bg-white position-relative">
+    <div class="plate2">
+        <img src="{{ Module::asset('main:img/plate3.png') }}">
+    </div>
     <div class="container">
         <div class="row">
             <h1 class="display-5 mb-5">Новые</h1>

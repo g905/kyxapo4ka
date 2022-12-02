@@ -232,9 +232,14 @@ main:not(section) {
 
 .plate2 {
     position: absolute;
-    top: -180px;
-    right: -100px;
-    z-index: -1;
+    top: -150px;
+    right: -150px;
+    z-index: 0;
+}
+
+.index-popular .container, .index-new .container, .recipe-page {
+    position: relative;
+    z-index: 10;
 }
 
 h1.display-5 {
@@ -465,7 +470,7 @@ a.card-link:hover .card {
     right: -60px;
 }
 
-.slick-dots {
+.slick-dots:not(.slick-index .slick-dots) {
     margin: 1rem auto;
     bottom: unset;
 }

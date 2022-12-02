@@ -4,7 +4,7 @@
 
 <a href="{{ url()->previous() }}">back</a>
 
-<div class="main-content">
+<div class="main-content recipe-page">
     <div class="recipe-title mb-5">
         <h1 class="display-5">{{ $recipe->name }}</h1>
     </div>
@@ -65,7 +65,7 @@
 
 <section class="index-new py-5 position-relative bg-white">
     <div class="plate2">
-        <img src="img/plate2.png">
+        <img src="{{ Module::asset('main:img/plate4.png') }}">
     </div>
     <div class="container">
         <div class="row">
