@@ -103,7 +103,7 @@
         </div>
     </div>
 
-    <div class="recipes d-flex flex-wrap justify-content-start">
+    <div class="recipes d-flex flex-wrap justify-content-start mb-5">
         @foreach($recipes as $recipe)
 
         @include('catalog::recipe_card')
@@ -111,13 +111,56 @@
         @endforeach
     </div>
 
-    <div class="more-block d-flex align-items-center justify-content-center my-5">
-        <button class="btn more-btn">Еще</button>
+
+
+    <div class="more-block d-flex align-items-center justify-content-center mb-5">
+        @if($recipes->nextPageUrl())
+        <button class="btn more-btn" data-next='{{ $recipes->nextPageUrl() }}'>Еще</button>
+        @endif
     </div>
+
+
 </div>
 
 @endsection
 
 @section('secondary')
+
+@endsection
+
+
+
+@section('scripts')
+
+<script>
+    let btn = $('.more-btn');
+
+    var nextUrl = $(btn).data('next');
+
+    $(btn).click(function () {
+        $.ajax({
+            url: nextUrl,
+            dataType: 'html',
+            data: $('.ff').serialize(),
+            beforeSend: function () {
+                $('.loader').fadeIn(200);
+            },
+            complete: function () {
+                $('.loader').fadeOut(200);
+            },
+            success: function (data) {
+                $('.recipes').append(JSON.parse(data)["aaa"]);
+                nextUrl = JSON.parse(data)["bbb"];
+                if (!nextUrl) {
+                    $('.more-btn').hide();
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
+</script>
 
 @endsection

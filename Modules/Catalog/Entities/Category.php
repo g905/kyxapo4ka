@@ -51,7 +51,7 @@ class Category extends Model {
             $q->orderBy("rating", "desc");
         }
 
-        return $q->paginate(9);
+        return $q->paginate(6);
     }
 
 }

@@ -482,3 +482,43 @@ a.card-link:hover .card {
 .slick-dots li.slick-active button:before {
     color: #ccc;
 }
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,.5);
+    display: none;
+    z-index: 1000;
+    color: #fff;
+    font-size: 40px;
+}
+.loader div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loader-img {
+    width: 300px;
+    height: 300px;
+    animation: loader infinite linear 3s;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotateZ(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateZ(180deg) scale(.95);
+    }
+
+    100% {
+        transform: rotateZ(360deg) scale(1);
+    }
+
+}

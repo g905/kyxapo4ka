@@ -18,7 +18,7 @@ class CatalogController extends Controller {
     }
 
     public function category(Request $request, $code, $recipe = null) {
-        //dd($request);
+
         if ($recipe) {
             return view('catalog::recipe', ['recipe' => \Modules\Catalog\Entities\Recipe::where(['code' => $recipe])->first()]);
         }
@@ -33,6 +33,14 @@ class CatalogController extends Controller {
             ["code" => "popular", "text" => "Сначала популярные"],
             ["code" => "price", "text" => "Сначала дешевые"]
         ];
+
+        if ($request->ajax()) {
+            sleep(1);
+            $a = view('catalog::recipes_chunk', ['cat' => $cat, 'recipes' => $recipes]);
+            $d["aaa"] = $a->render();
+            $d["bbb"] = $recipes->nextPageUrl();
+            return $d;
+        }
 
         return view('catalog::category', ['cat' => $cat, 'cats' => $cats, 'recipes' => $recipes, 'types' => Type::all(), 'prices' => $prices, 'sorts' => $sorts, 'request' => $request]);
     }
