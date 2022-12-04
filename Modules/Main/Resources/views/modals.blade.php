@@ -11,12 +11,12 @@
                     <div class="modal-body">
                         <div class='col-12 mb-3'>
                             <label for='name'>Ваше имя</label>
-                            <input type='text' id="name" name='name' class="mb-3" style="width: 100%" placeholder='Ваше имя'>
+                            <input type='text' id="name" name='name' class="mb-3" style="width: 100%" placeholder='Ваше имя' required>
 
                             <div style="font-size: 14px" class='name error text-danger d-flex justify-content-end'></div>
                             <div class='col-12'>
                                 <label for='message'class="col-12">Сообщение</label>
-                                <textarea name='message' id="message" class="" style="width: 100%; min-height: 200px" placeholder='Сообщение'></textarea>
+                                <textarea name='message' id="message" class="" style="width: 100%; min-height: 200px" placeholder='Сообщение' required></textarea>
                                 <div style="font-size: 14px" class='message error text-danger d-flex justify-content-end'></div>
                             </div>
                         </div>

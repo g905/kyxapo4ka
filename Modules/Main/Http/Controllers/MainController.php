@@ -37,14 +37,11 @@ class MainController extends Controller {
             return response()->json($validator->errors()->setFormat(':key - :message'), 500);
         }
 
-        $data = $validator->validated();
-
-        $email = setting('site.email');
-        $fdb = new \App\Mail\Feedback($email, $data);
+        $fdb = new \App\Mail\Feedback(setting('site.email'), $validator->validated());
         if ($fdb) {
-            \Illuminate\Support\Facades\Mail::to($email)->send(new \App\Mail\Feedback($email, $data));
+            \Illuminate\Support\Facades\Mail::to($fdb->email)->send($fdb);
         }
-        return response()->json(['success' => 'Письмо успешно отправлено!'], 200);
+        return response()->json(['success' => 'Сообщение успешно отправлено!'], 200);
     }
 
     /**
