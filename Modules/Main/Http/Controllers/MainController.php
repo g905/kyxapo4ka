@@ -17,6 +17,36 @@ class MainController extends Controller {
         return view('main::index', ['cats' => $cats]);
     }
 
+    public function feedback(Request $request) {
+        sleep(2);
+        if (!$request->ajax()) {
+            return false;
+        }
+
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+                    'name' => 'required|max:255',
+                    'message' => 'required'
+                        ],
+                        [
+                            'name.required' => 'Представьтесь, пожалуйста',
+                            'message.required' => 'Напишите что-нибудь'
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->json($validator->errors()->setFormat(':key - :message'), 500);
+        }
+
+        $data = $validator->validated();
+
+        $email = setting('site.email');
+        $fdb = new \App\Mail\Feedback($email, $data);
+        if ($fdb) {
+            \Illuminate\Support\Facades\Mail::to($email)->send(new \App\Mail\Feedback($email, $data));
+        }
+        return response()->json(['success' => 'Письмо успешно отправлено!'], 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      * @return Renderable

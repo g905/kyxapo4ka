@@ -11,23 +11,7 @@
             {{ $cat->name }}
         </div>
     </div>
-    <!--<div class="subcategories">
-        <ul class="nav nav-pills">
-            @foreach($cat->products as $prod)
-            @if(!$prod->recipes->count()) @continue @endif
-            <li class="nav-item">
-                @if(isset($product) && ($prod->code == $product))
-                <a class="nav-link active disabled" href="{{ route('product', ['code' => $cat->code, 'product' => $prod->code]) }}">{{ $prod->name }}</a>
-                @else
-                <a class="nav-link" href="{{ route('product', ['code' => $cat->code, 'product' => $prod->code]) }}">{{ $prod->name }}</a>
-                @endif
-            </li>
-            @endforeach
-        </ul>
-    </div>-->
-    @foreach($request->all() as $i)
 
-    @endforeach
     <div class="filters">
         <div class="filters-form">
             <form class="ff" method="post" action="">
@@ -146,7 +130,7 @@
                 $('.loader').fadeIn(200);
             },
             complete: function () {
-                $('.loader').fadeOut(200);
+                $('.loader').fadeOut(400);
             },
             success: function (data) {
                 $('.recipes').append(JSON.parse(data)["aaa"]);

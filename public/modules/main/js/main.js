@@ -31,3 +31,64 @@ $('.slick-pop').slick({
         }
     ]
 });
+
+
+
+let form = $('#feedbackModal').find('.modal-body').html();
+
+$('#feedbackModal').on('hidden.bs.modal', function () {
+    $('#feedbackModal').find('.modal-body').html(form);
+    $('#feedbackModal').find('.sbmt').show();
+    $(this).find('.feedbackForm')[0].reset();
+    $(this).find('.error').html("");
+});
+
+
+function callbackThen(response) {
+    // read Promise object
+    response.json().then(function (data) {
+        console.log(data);
+        if (data.success && data.score >= 0.6) {
+
+            $('.feedbackForm').submit(function (e) {
+                e.preventDefault(e);
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'post',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    beforeSend: function () {
+                        $('#feedbackModal').find('.error').html("");
+                        $('.loader').fadeIn(200);
+                    },
+                    success: function (data) {
+                        $('.loader').fadeOut(400);
+
+                        $('#feedbackModal').find('.modal-body').html(data["success"]);
+                        $('#feedbackModal').find('.sbmt').hide();
+                    },
+                    error: function (err) {
+                        $('.loader').fadeOut(400);
+                        $.each(err.responseJSON, function (key, value) {
+                            $('.' + key).show();
+                            $('.' + key).append('<p>' + value + '</p>');
+                        });
+                        console.log(err);
+                    }
+                });
+
+            });
+
+        } else {
+            $('.feedbackForm').submit(function (e) {
+                e.preventDefault(e);
+                console.log('капча невалидна');
+            });
+        }
+    });
+}
+
+function callbackCatch(error) {
+    console.error('Error:', error)
+}

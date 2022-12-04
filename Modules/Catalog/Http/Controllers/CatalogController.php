@@ -35,7 +35,7 @@ class CatalogController extends Controller {
         ];
 
         if ($request->ajax()) {
-            sleep(1);
+            sleep(fake()->numberBetween(0.1, 1.5));
             $a = view('catalog::recipes_chunk', ['cat' => $cat, 'recipes' => $recipes]);
             $d["aaa"] = $a->render();
             $d["bbb"] = $recipes->nextPageUrl();

@@ -494,6 +494,7 @@ a.card-link:hover .card {
     z-index: 1000;
     color: #fff;
     font-size: 40px;
+    backdrop-filter: blur(3px) grayscale(.3);
 }
 .loader div {
     width: 100%;
