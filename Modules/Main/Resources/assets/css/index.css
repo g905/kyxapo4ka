@@ -490,11 +490,13 @@ a.card-link:hover .card {
     width: 100%;
     height: 100%;
     background: rgba(255,255,255,.5);
+    background: rgba(255,255,255,0);
     display: none;
     z-index: 1000;
+    z-index: 1100;
     color: #fff;
     font-size: 40px;
-    backdrop-filter: blur(3px) grayscale(.3);
+    backdrop-filter: blur(10px) grayscale(.6);
 }
 .loader div {
     width: 100%;
@@ -522,4 +524,34 @@ a.card-link:hover .card {
         transform: rotateZ(360deg) scale(1);
     }
 
+}
+
+.top-btn {
+    position: fixed;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.3));
+    width: 100px;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 2rem;
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+    opacity: .8;
+    transition: opacity 0.3s;
+}
+.top-btn:hover {
+    opacity: 1;
+}
+.top-btn i {
+    opacity: .4;
+    transition: opacity 0.3s;
+}
+.top-btn i {
+    z-index: 105;
 }

@@ -34,7 +34,7 @@ class Recipe extends Model {
     }
 
     public static function getPopular() {
-        return self::where(['active' => true])->where(['popular' => true])->where('rating', '>=', '5')->take(10)->get();
+        return self::where(['active' => true])->where(['popular' => true])->take(10)->get();
     }
 
     public static function getNew() {

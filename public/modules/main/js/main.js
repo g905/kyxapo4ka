@@ -33,6 +33,7 @@ $('.slick-pop').slick({
 });
 
 
+//******** Feedback form modal and recatpcha *************//
 
 let form = $('#feedbackModal').find('.modal-body').html();
 
@@ -91,4 +92,32 @@ function callbackThen(response) {
 
 function callbackCatch(error) {
     console.error('Error:', error)
+}
+
+
+
+//*************** Scroll to top button **************//
+
+
+let topBtn = $('.top-btn');
+$(topBtn).css("display", "flex").hide();
+window.onscroll = function () {
+    scrollFunction();
+};
+function scrollFunction() {
+    if (
+            //document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 1600
+            ) {
+        $(topBtn).fadeIn(400);
+    } else {
+        $(topBtn).fadeOut(400);
+    }
+}
+// When the user clicks on the button, scroll to the top of the document
+$(topBtn).on("click", backToTop);
+
+function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }

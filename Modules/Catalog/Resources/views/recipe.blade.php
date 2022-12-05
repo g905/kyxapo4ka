@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="{{ url()->previous() }}">back</a>
+<a class="btn more-btn mb-3" href="{{ route('product', ['code' => $recipe->category->code]) }}">Назад</a>
 
 <div class="main-content recipe-page">
     <div class="recipe-title mb-5">

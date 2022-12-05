@@ -188,37 +188,6 @@
 
         <div class="top-btn"><i class="fa-solid fa-chevron-up"></i></div>
 
-        <style>
-            .top-btn {
-                position: fixed;
-                height: 100vh;
-                background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.3));
-                width: 100px;
-                left: 0;
-                bottom: 0;
-                display: flex;
-                justify-content: center;
-                align-items: end;
-                padding-bottom: 2rem;
-                font-size: 3rem;
-                color: #fff;
-                cursor: pointer;
-                z-index: 100;
-                display: none;
-                opacity: .8;
-                transition: opacity 0.3s;
-            }
-            .top-btn:hover {
-                opacity: 1;
-            }
-            .top-btn i {
-                opacity: .4;
-                transition: opacity 0.3s;
-            }
-            .top-btn i {
-                z-index: 105;
-            }
-        </style>
 
         <script src="{{ Module::asset('main:lib/jquery/jquery-3.6.1.min.js') }}"></script>
         <script src="{{ Module::asset('main:lib/bootstrap/js/bootstrap.js') }}"></script>
@@ -226,32 +195,6 @@
         <script src="{{ Module::asset('main:js/main.js') }}"></script>
 
         @yield('scripts')
-
-        <script>
-
-let topBtn = $('.top-btn');
-$(topBtn).css("display", "flex").hide();
-window.onscroll = function () {
-    scrollFunction();
-};
-function scrollFunction() {
-    if (
-            //document.body.scrollTop > 20 ||
-            document.documentElement.scrollTop > 1600
-            ) {
-        $(topBtn).fadeIn(400);
-    } else {
-        $(topBtn).fadeOut(400);
-    }
-}
-// When the user clicks on the button, scroll to the top of the document
-$(topBtn).on("click", backToTop);
-
-function backToTop() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-        </script>
 
     </body>
 </html>
