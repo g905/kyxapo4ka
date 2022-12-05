@@ -41,7 +41,7 @@
                 <div class="slick-pop">
                     @foreach(Modules\Catalog\Entities\Recipe::getPopular() as $recipe)
 
-                    @include('catalog::recipe_card', ['cat' => $recipe->category])
+                    @include('catalog::recipe_card')
 
                     @endforeach
                 </div>
@@ -68,7 +68,7 @@
 
                     @foreach(Modules\Catalog\Entities\Recipe::getNew() as $recipe)
 
-                    @include('catalog::recipe_card', ['cat' => $recipe->category])
+                    @include('catalog::recipe_card')
 
                     @endforeach
 

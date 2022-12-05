@@ -17,3 +17,5 @@ Route::prefix('catalog')->group(function () {
     Route::get('/{code}/{recipe?}', 'CatalogController@category')->name('product');
     Route::post('/{code}/{recipe?}', 'CatalogController@category')->name('filter');
 });
+
+Route::get('/search', 'CatalogController@search')->name('search');

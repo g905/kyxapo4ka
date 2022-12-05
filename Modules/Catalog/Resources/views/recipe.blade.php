@@ -1,4 +1,4 @@
-@extends('main::layouts.master')
+@extends('main::layouts.page')
 
 @section('content')
 
@@ -75,7 +75,7 @@
             <div class="info-content">
                 <div class="slick-pop">
                     @foreach($recipe->getSimilar() as $recipe)
-                    @include('catalog::recipe_card', ['cat' => $recipe->category])
+                    @include('catalog::recipe_card')
                     @endforeach
 
                 </div>

@@ -4,7 +4,7 @@
     <body>
         @include('main::includes.header')
 
-        @include('main::2col_page')
+        @include('main::1col_page')
 
         @include('main::includes.footer')
 

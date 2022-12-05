@@ -1,5 +1,5 @@
 <div class="recipe">
-    <a class="card-link" href="{{ route('product', ['code' => $cat->code, 'recipe' => $recipe->code]) }}">
+    <a class="card-link" href="{{ route('product', ['code' => $recipe->category->code, 'recipe' => $recipe->code]) }}">
         <div class="card" >
             <!--<img src="{{ Voyager::image($recipe->thumbnail('cropped', 'main_image')) }}" class="card-img-top" alt="{{ $recipe->code }}">-->
             <img src="{{ $recipe->main_image }}" class="card-img-top" alt="{{ $recipe->code }}">

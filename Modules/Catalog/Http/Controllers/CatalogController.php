@@ -45,6 +45,10 @@ class CatalogController extends Controller {
         return view('catalog::category', ['cat' => $cat, 'cats' => $cats, 'recipes' => $recipes, 'types' => Type::all(), 'prices' => $prices, 'sorts' => $sorts, 'request' => $request]);
     }
 
+    public function search(Request $request) {
+        return view('catalog::search');
+    }
+
     /**
      * Show the form for creating a new resource.
      * @return Renderable
