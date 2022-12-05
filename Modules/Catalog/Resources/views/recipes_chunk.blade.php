@@ -1,6 +1,6 @@
 @foreach($recipes as $recipe)
 
-@include('catalog::recipe_card', ['recipe' => $recipe, 'cat' => $cat])
+@include('catalog::recipe_card', ['recipe' => $recipe])
 
 @endforeach
 

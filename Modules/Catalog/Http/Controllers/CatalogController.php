@@ -36,7 +36,7 @@ class CatalogController extends Controller {
 
         if ($request->ajax()) {
             sleep(fake()->numberBetween(0.1, 1.5));
-            $a = view('catalog::recipes_chunk', ['cat' => $cat, 'recipes' => $recipes]);
+            $a = view('catalog::recipes_chunk', ['recipes' => $recipes]);
             $d["aaa"] = $a->render();
             $d["bbb"] = $recipes->nextPageUrl();
             return $d;
@@ -46,7 +46,24 @@ class CatalogController extends Controller {
     }
 
     public function search(Request $request) {
-        return view('catalog::search');
+        $recipes = \Modules\Catalog\Entities\Recipe::query()
+                        ->where('name', 'LIKE', "%{$request->get('query')}%")
+                        ->orWhere('description', 'LIKE', "%{$request->get('query')}%")
+                        ->orWhere('content', 'LIKE', "%{$request->get('query')}%")->paginate(8);
+        $products = \Modules\Catalog\Entities\Product::query()
+                        ->where('name', 'LIKE', "%{$request->get('query')}%")->get();
+
+        $recipes->appends(['query' => $request->get('query')]);
+
+        if ($request->ajax()) {
+            sleep(fake()->numberBetween(0.1, 1.5));
+            $a = view('catalog::recipes_chunk', ['recipes' => $recipes]);
+            $d["aaa"] = $a->render();
+            $d["bbb"] = $recipes->nextPageUrl();
+            return $d;
+        }
+
+        return view('catalog::search', ['recipes' => $recipes, 'products' => $products]);
     }
 
     /**
