@@ -17,6 +17,8 @@
             <form class="ff" method="post" action="">
                 @csrf
 
+                <input type='hidden' name='code' value='{{ $cat->code }}'>
+
                 <div class="subcategories">
 
                     @foreach($cat->products as $prod)
@@ -26,7 +28,7 @@
                     <label class="btn prod-link" for="{{ $prod->code }}">{{ $prod->name }}</label>
                     <!--<a class="nav-link active disabled" href="{{ route('product', ['code' => $cat->code, 'product' => $prod->code]) }}">{{ $prod->name }}</a>-->
                     @else
-                    <input type="radio" class="btn-check" name="product" id="{{ $prod->code }}" value="{{ $prod->code }}" onchange="$('.ff').submit();" >
+                    <input type="radio" class="btn-check" name="product" id="{{ $prod->code }}" value="{{ $prod->code }}" >
                     <label class="btn prod-link" for="{{ $prod->code }}" >{{ $prod->name }}</label>
                     <!--<a class="nav-link" href="{{ route('product', ['code' => $cat->code, 'product' => $prod->code]) }}">{{ $prod->name }}</a>-->
                     @endif
@@ -42,7 +44,7 @@
                     <input type="radio" class="btn-check" name="price" id="price-{{ $price }}" value="{{ $price }}" checked>
                     <label class="btn prod-link" for="price-{{ $price }}">до {{ $price }}р.</label>
                     @else
-                    <input type="radio" class="btn-check" name="price" id="price-{{ $price }}" value="{{ $price }}" onchange="$('.ff').submit();" >
+                    <input type="radio" class="btn-check" name="price" id="price-{{ $price }}" value="{{ $price }}" >
                     <label class="btn prod-link" for="price-{{ $price }}">до {{ $price }}р.</label>
                     @endif
 
@@ -59,7 +61,7 @@
                     <label class="btn prod-link" for="type-{{ $type->id }}">{{ $type->name }}</label>
 
                     @else
-                    <input type="radio" class="btn-check" name="type" id="type-{{ $type->id }}" value="{{ $type->id }}" onchange="$('.ff').submit();" >
+                    <input type="radio" class="btn-check" name="type" id="type-{{ $type->id }}" value="{{ $type->id }}" >
                     <label class="btn prod-link" for="type-{{ $type->id }}" >{{ $type->name }}</label>
 
                     @endif
@@ -75,7 +77,7 @@
                     <label class="btn prod-link" for="sort-{{ $sort["code"] }}">{{ $sort["text"] }}</label>
 
                     @else
-                    <input type="radio" class="btn-check" name="sort" id="sort-{{ $sort["code"] }}" value="{{ $sort["code"] }}" onchange="$('.ff').submit();" >
+                    <input type="radio" class="btn-check" name="sort" id="sort-{{ $sort["code"] }}" value="{{ $sort["code"] }}" >
                     <label class="btn prod-link" for="sort-{{ $sort["code"] }}">{{ $sort["text"] }}</label>
 
                     @endif
@@ -118,9 +120,7 @@
 
 <script>
     let btn = $('.more-btn');
-
     var nextUrl = $(btn).data('next');
-
     $(btn).click(function () {
         $.ajax({
             url: nextUrl,
@@ -136,6 +136,35 @@
                 $('.recipes').append(JSON.parse(data)["aaa"]);
                 nextUrl = JSON.parse(data)["bbb"];
                 if (!nextUrl) {
+                    $('.more-btn').hide();
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+    $('.ff').change(function (e) {
+        let form = $('.ff').serializeArray();
+        $.ajax({
+            url: "{{ route('ajax_filter') }}",
+            type: 'post',
+            dataType: 'html',
+            data: form,
+            beforeSend: function () {
+                $('.loader').fadeIn(200);
+            },
+            complete: function () {
+                $('.loader').fadeOut(400);
+            },
+            success: function (data) {
+                console.log(data);
+                $('.recipes').html("");
+                $('.recipes').append(JSON.parse(data)["aaa"]);
+                nextUrl = JSON.parse(data)["bbb"];
+                if (nextUrl) {
+                    $('.more-btn').show();
+                } else {
                     $('.more-btn').hide();
                 }
             },

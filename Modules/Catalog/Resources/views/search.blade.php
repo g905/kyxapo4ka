@@ -4,7 +4,7 @@
 
 <div class="main-content recipe-page">
     <div class="recipe-title mb-5">
-        <h1 class="display-5">Найдено {{ $recipes->total() }} {{ trans_choice('рецепт|рецепта|рецептов', $recipes->total()) }}</h1>
+        <h1 class="display-5">{{ trans_choice('Найден|Найдено|Найдено', $recipes->total()) }} {{ $recipes->total() }} {{ trans_choice('рецепт|рецепта|рецептов', $recipes->total()) }}</h1>
     </div>
     @if($recipes->count())
     <div class="recipes d-flex flex-wrap">
@@ -57,3 +57,5 @@
 </script>
 
 @endsection
+
+пр Мира 90, к.1 в 15:00

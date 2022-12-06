@@ -23,7 +23,7 @@ class CatalogController extends Controller {
             return view('catalog::recipe', ['recipe' => \Modules\Catalog\Entities\Recipe::where(['code' => $recipe])->first()]);
         }
 
-        $cat = \Modules\Catalog\Entities\Category::where(['code' => $code])->first();
+        $cat = \Modules\Catalog\Entities\Category::where(['code' => $request->code])->first();
         $cats = \Modules\Catalog\Entities\Category::where(['active' => true])->orderBy('sort')->get();
 
         $recipes = $cat->getRecipes($request);
@@ -35,7 +35,7 @@ class CatalogController extends Controller {
         ];
 
         if ($request->ajax()) {
-            sleep(fake()->numberBetween(0.1, 1.5));
+            //sleep(fake()->numberBetween(0.1, 1.5));
             $a = view('catalog::recipes_chunk', ['recipes' => $recipes]);
             $d["aaa"] = $a->render();
             $d["bbb"] = $recipes->nextPageUrl();

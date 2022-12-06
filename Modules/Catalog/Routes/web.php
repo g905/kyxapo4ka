@@ -16,6 +16,7 @@ Route::prefix('catalog')->group(function () {
     //Route::get('/{code}/{product?}', 'CatalogController@category')->name('product');
     Route::get('/{code}/{recipe?}', 'CatalogController@category')->name('product');
     Route::post('/{code}/{recipe?}', 'CatalogController@category')->name('filter');
+    Route::post('/filter/{code?}', 'CatalogController@category')->name('ajax_filter');
 });
 
 Route::get('/search', 'CatalogController@search')->name('search');
